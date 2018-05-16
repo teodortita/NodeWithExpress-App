@@ -1,0 +1,47 @@
+<% include partials/header %>
+    <div class="wrapper">
+        <div class="title">
+            <img src="/img/title.png" />Minimalist Blog</div>
+        <div class="first">
+            <h1>Add post</h1>
+            <form method="POST" action="/posts/add" class="form">
+                <label>Author</label>
+                <br>
+                <input type="text" name="author" class="otherFields">
+                <br>
+                <label>Title</label>
+                <br>
+                <input type="text" name="title" class="otherFields">
+                <br>
+                <label>Content</label>
+                <br>
+                <input type="text" name="content" class="contentField">
+                <br>
+                <input type="submit" value="submit" class="submit">
+            </form>
+        </div>
+        <div class="second">
+            <h1>
+                <%=title%>
+            </h1>
+            <ul>
+                <% posts.forEach(function(post) { %>
+                    <li>
+                        <div class="card">
+                            <h3 class="noMargin">
+                                <%= post.title %>
+                            </h3>
+                            <h5 class="noMargin">By
+                                <%=post.author %> |
+                                    <%= post.date %>
+                            </h5>
+                            <p>
+                                <%= post.content %>
+                            </p>
+                        </div>
+                    </li>
+                    <% }) %>
+            </ul>
+        </div>
+    </div>
+    <% include partials/footer %>
